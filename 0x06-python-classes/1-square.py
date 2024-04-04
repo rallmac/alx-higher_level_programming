@@ -9,6 +9,6 @@ class Square:
         """Initializes a square.
 
         Args:
-            size (int): The size of the new square.
+            size: The size of the new square.
         """
         self.__size = size
