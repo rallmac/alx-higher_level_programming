@@ -2,13 +2,13 @@
 """Define the function that adds two integers"""
 
 def add_integer(a, b=98):
-    """Check if both inputs are integers or floats"""
-    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-        raise TypeError("a, must be an integer or b must be an integer")
-
-    """Cast to integers if inputs are floats"""
-    a = int(a)
-    b = int(b)
-
-    """Return the addition of a and b"""
-    return (a + b)
+    """Return the integer addition of a and b.
+    float arguments are typecasted to ints before addition is performed.
+    Raises:
+        Typeerror: if either of a or b is a non-integer and non-float.
+    """
+    if ((not isinstance(a, int) and not isinstance(a, float))):
+        raise TypeError("a must be an integer")
+    if ((not isinstance(b, int) and not isinstance(b, float))):
+        raise TypeError("b must be an integer")
+    return (int(a) + int(b))
