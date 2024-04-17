@@ -1,3 +1,1 @@
-{"name": "John", "places": ["San Francisco", "Tokyo"], "id": 12, "info": {"average": 3.14, "age": 36}, "is_active": true}
-guillaume@ubuntu:~/0x0B$ cat my_fake.json ; echo ""
-{"is_active": true, 12 }
+{"id": 12, "name": "John", "places": ["San Francisco", "Tokyo"], "is_active": true, "info": {"age": 36, "average": 3.14}}
