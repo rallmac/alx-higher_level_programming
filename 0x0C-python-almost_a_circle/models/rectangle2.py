@@ -2,6 +2,7 @@
 
 from .base import Base
 
+
 class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -15,18 +16,18 @@ class Rectangle(Base):
         self.set_y(y)
 
     def get_width(self):
-        return self.__width
+        return (self.__width)
 
     def set_width(self, width):
         if isinstance(width, int) and width > 0:
             self.__width = width
-        elif not isinstance(width, int):
+        elif not isinstance (width, int):
             raise TypeError("width must be an integer")
         else:
             raise ValueError("width must be > 0")
 
     def get_height(self):
-        return self.__height
+        return (self.__height)
 
     def set_height(self, height):
         if isinstance(height, int) and height > 0:
@@ -37,7 +38,7 @@ class Rectangle(Base):
             raise ValueError("height must be > 0")
 
     def get_x(self):
-        return self.__x
+        return (self.__x)
 
     def set_x(self, x):
         if isinstance(x, int) and x >= 0:
@@ -48,7 +49,7 @@ class Rectangle(Base):
             raise ValueError("x must be >= 0")
 
     def get_y(self):
-        return self.__y
+        return (self.__y)
 
     def set_y(self, y):
         if isinstance(y, int) and y >= 0:
@@ -57,6 +58,3 @@ class Rectangle(Base):
             raise TypeError("y must be an integer")
         else:
             raise ValueError("y must be >= 0")
-
-    def area(self):
-        return (self.__width * self.__height)
