@@ -9,3 +9,12 @@ class Square(Rectangle):
 
     def __str__(self):
         return (f'[Square] ({self.id}) {self.get_x()}/{self.get_y()} - {self.get_width()}')
+
+    def get_size(self):
+        return (self.get_width())
+    
+    def set_size(self, size):
+        self.set_width(size)
+        self.set_height(size)
+
+    size = property(get_size, set_size)
