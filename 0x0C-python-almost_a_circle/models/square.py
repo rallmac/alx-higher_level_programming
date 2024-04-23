@@ -19,6 +19,14 @@ class Square(Rectangle):
 
     size = property(get_size, set_size)
 
+    def to_dictionary(self):
+        return {
+            'id': self.id,
+            'size': self.get_width(),
+            'x': self.get_x(),
+            'y': self.get_y()
+        }
+
     def update(self, *args, **kwargs):
         if args:
             if len(args) >= 1:
