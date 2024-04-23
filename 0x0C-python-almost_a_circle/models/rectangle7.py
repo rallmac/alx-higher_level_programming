@@ -68,15 +68,6 @@ class Rectangle(Base):
         for _ in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
 
-    def to_dictionary(self):
-        return {
-            'id': self.id,
-            'width': self.__width,
-            'height': self.__height,
-            'x': self.__x,
-            'y': self.__y
-        }
-
     def update(self, *args, **kwargs):
         if args:
             if len(args) >= 1:
