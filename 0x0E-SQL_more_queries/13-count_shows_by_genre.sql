@@ -1,3 +1,5 @@
+-- This script works like the previous script in
+-- task 12
 SELECT name AS genre, COUNT(*) AS number_of_shows FROM tv_genres
 JOIN tv_show_genres ON id=tv_show_genre.genre_id
 GROUP BY tv_show_genres.genre_id

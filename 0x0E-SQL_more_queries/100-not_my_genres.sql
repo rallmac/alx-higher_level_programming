@@ -1,3 +1,5 @@
+-- This script works like the previous script in
+-- task 16
 SELECT name FROM tv_genres
 WHERE tv_genres.id NOT IN (
 	SELECT tv_genres.id FROM tv_genres
