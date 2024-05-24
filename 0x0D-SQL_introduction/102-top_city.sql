@@ -3,11 +3,9 @@
 -- The data was imported from a dump table called
 -- temperatures.sql
 
-mysql -u -p hbtn_0c_0 < temperatures.sql
-
-SELECT city, AVG(temperature) AS average_temperature
+SELECT `city`, AVG(`value`) AS `avg_temp`
 FROM temperatures
 WHERE month(date) IN (7, 8)
-GROUP BY city
-ORDER BY average_temperature DESC
+GROUP BY `city`
+ORDER BY `avg_temp` DESC
 LIMIT 3;
