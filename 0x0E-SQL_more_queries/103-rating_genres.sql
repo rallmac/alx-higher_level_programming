@@ -1,19 +1,12 @@
--- This script works like the previous script in
--- task 16
-SELECT DISTINCT `name` 
+-- This script imports the database dump from 
+-- hbtn_0d_tvshows_rate to my own MySQL server
+-- and it displays the genres ratig
+SELECT `name`, SUM(`rate`) AS `rating`
 	FROM `tv_genres` AS g
 		INNER JOIN `tv_show_genres` AS s
-		ON g.`id` = s.`genre_id`
+		ON s.`genre_id` = g.`id`
 
-		INNER JOIN `tv_shows` AS t
-		ON s.`show_id` = t.`id`
-		WHERE g.`name` NOT IN
-			(SELECT `name`
-				FROM `tv_genres` AS g
-					INNER JOIN `tv_show_genres` AS s
-					ON g.`id` = s.`genre_id`
-
-					INNER JOIN `tv_shows` AS t
-					ON s.`show_id` = t.`id`
-					WHERE t.`title` = "Dexter")
-ORDER BY g.`name`;
+		INNER JOIN `tv_show_ratings` AS r
+		ON r.`show_id` = s.`show_id`
+GROUP BY `name`
+ORDER BY `rating` DESC;
