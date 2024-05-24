@@ -2,7 +2,7 @@
 -- hbtn_0c_0
 mysql -u -p hbtn_0c_0 < temperatures.sql
 
-SELECT `city`, AVG(`temperature`) AS `average_temperature`
+SELECT `city`, AVG(`value`) AS `avg_temp`
 FROM `temperatures`
 GROUP BY `city`
-ORDER BY `average_temperature` DESC;
+ORDER BY `avg_temp` DESC;
