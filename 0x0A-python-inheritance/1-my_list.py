@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This Class inherits from list
+"""
+
 
 class MyList(list):
     def print_sorted(self):
