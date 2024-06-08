@@ -5,12 +5,12 @@ This module defines a class MyList that inherits from the built-in list class.
 
 
 class MyList(list):
-"""
-A custom list class that inherits from the built-in list class.
+    """
+    A custom list class that inherits from the built-in list class.
 
-This class includes an additional method to print the
-elements of the list in a sorted order.
-"""
+    This class includes an additional method to print the
+    elements of the list in a sorted order.
+    """
 
     def print_sorted(self):
         """
