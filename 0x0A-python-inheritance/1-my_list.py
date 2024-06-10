@@ -26,3 +26,9 @@ class MyList(list):
         """
         sorted_list = sorted(self)
         print(sorted_list)
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
+
