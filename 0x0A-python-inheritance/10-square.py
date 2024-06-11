@@ -3,7 +3,6 @@
 Rectangle = __import__('9-rectangle').Rectangle
 
 
-
 class Square(Rectangle):
     """ A subclass that represents a rectangle """
     def __init__(self, size):
@@ -14,5 +13,8 @@ class Square(Rectangle):
         super().__init__(size, size)
 
     def __str__(self):
-        """ This method returns area of the square """
-        return self.__size ** 2
+        """
+        This method is a string representation of a square
+        and returns area of the square
+        """
+        return "[square] {}/{}".format(self.__size, self.__size)
