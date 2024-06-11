@@ -8,11 +8,11 @@ class Square(Rectangle):
     """ A subclass that represents a rectangle """
     def __init__(self, size):
         """ The init constructor """
-        self.__size is 0
+        self.__size = 0
         self.integer_validator("size", size)
-        self.__size is size
+        self.__size = size
         super().__init__(size, size)
 
     def __str__(self):
         """ This method returns area of the square """
-        return "[Square] {}/{}".format(self.__size, self.__size)
+        return self.__size ** 2
