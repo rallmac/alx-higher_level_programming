@@ -25,8 +25,3 @@ class MyList(list):
             [1, 2, 3]
         """
         print(sorted(self))
-
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

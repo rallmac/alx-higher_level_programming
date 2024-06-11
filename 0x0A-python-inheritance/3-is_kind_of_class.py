@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""
-This function returns true if object is an inherited instance
-"""
+"""Module for is_kind_of_class method."""
+
+
 def is_kind_of_class(obj, a_class):
+    """Determines if an object is a subclass of a class."""
     return isinstance(obj, a_class)
