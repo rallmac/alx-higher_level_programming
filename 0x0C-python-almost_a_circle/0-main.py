@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-""" 0-main """
+""" This model defines the base models 0-main """
 from models.base import Base
+
 
 if __name__ == "__main__":
 

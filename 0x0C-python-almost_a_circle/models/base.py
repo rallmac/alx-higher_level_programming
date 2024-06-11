@@ -57,3 +57,32 @@ class Base:
                 return ([cls.create(**dictionary) for dictionary in dictionaries])
         except FileNotFoundError:
             return ([])
+        
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        file_name = cls.__name__ + '.csv'
+        with open(file_name, 'w') as file:
+            if cls.__name__ == 'Rectangle':
+                for obj in list_objs:
+                    file.write(f"{obj.id},{obj.get_width()},{obj.get_height()},{obj.get_x()},{obj.get_y()}\n")
+            elif cls.__name__ == 'Square':
+                for obj in list_objs:
+                    file.write(f"{obj.id},{obj.get_size()},{obj.get_x()},{obj.get_y()}\n")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        file_name = cls.__name__ + '.csv'
+        try:
+            instances = []
+            with open(file_name, 'r') as file:
+                for line in file:
+                    data = line.strip().split(',')
+                    if cls.__name__ == 'Rectangle':
+                        id, width, height, x, y = map(int, data)
+                        instances.append(cls.create(id=id, width=width, height=height, x=x, y=y))
+                    elif cls.__name__ == 'Square':
+                        id, size, x, y = map(int, data)
+                        instances.append(cls.create(id=id, size=size, x=x, y=y))
+            return instances
+        except FileNotFoundError:
+            return ([])
