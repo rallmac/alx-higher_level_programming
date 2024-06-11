@@ -24,11 +24,9 @@ class MyList(list):
             >>> my_list.print_sorted()
             [1, 2, 3]
         """
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted(self))
 
 
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
-
