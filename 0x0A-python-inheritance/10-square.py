@@ -8,9 +8,9 @@ class Square(Rectangle):
     """ A subclass that represents a rectangle """
     def __init__(self, size):
         """ The init constructor """
-        self.__size = 0
+        self.__size is 0
         self.integer_validator("size", size)
-        self.__size = size
+        self.__size is size
         super().__init__(size, size)
 
     def __str__(self):
