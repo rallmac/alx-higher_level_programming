@@ -1,49 +1,71 @@
 #!/usr/bin/python3
-
-from .rectangle import Rectangle
+"""
+Defines a square class.
+"""
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """
+    Represent a square.
+    """
+
     def __init__(self, size, x=0, y=0, id=None):
+        """
+        Initialize a new Square.
+        """
         super().__init__(size, size, x, y, id)
 
-    def __str__(self):
-        return (f'[Square] ({self.id}) {self.get_x()}/{self.get_y()} - {self.get_width()}')
+    @property
+    def size(self):
+        """Get/set the size of the Square."""
+        return self.width
 
-    def get_size(self):
-        return (self.get_width())
-
-    def set_size(self, size):
-        self.set_width(size)
-        self.set_height(size)
-
-    size = property(get_size, set_size)
-
-    def to_dictionary(self):
-        return {
-            'id': self.id,
-            'size': self.get_width(),
-            'x': self.get_x(),
-            'y': self.get_y()
-        }
+    @size.setter
+    def size(self, value):
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
-        if args:
-            if len(args) >= 1:
-                self.id = args[0]
-            if len(args) >= 2:
-                self.set_size(args[1])
-            if len(args) >= 3:
-                self.set_x(args[2])
-            if len(args) >= 4:
-                self.set_y(args[3])
-        elif kwargs:
+        """
+        Update the Square.
+        """
+        if args and len(args) != 0:
+            for count, arg in enumerate(args):
+                if count == 0:
+                    self.id = arg
+                elif count == 1:
+                    self.x = arg
+                elif count == 2:
+                    self.size = arg
+                elif count == 3:
+                    self.y = arg
+                else: continue
+
+        elif len(kwargs) > 0:
             for key, value in kwargs.items():
-                if key == 'id':
+                if key == "id":
                     self.id = value
-                elif key == 'size':
-                    self.set_size(value)
-                elif key == 'x':
-                    self.set_x(value)
-                elif key == 'y':
-                    self.set_y(value)
+                elif key == "x":
+                    self.x = value
+                elif key == "size":
+                    self.size = value
+                elif key == "y":
+                    self.y = value
+                # removed the break statement, incase if the passed args are greater
+                # than 5, and one of the attributes is at the end
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the Square."""
+        square_dict = {
+            "id": self.id,
+            "x": self.x,
+            "size": self.width,
+            "y": self.y
+        }
+
+        return square_dict
+
+    def __str__(self):
+        """Return the print() and str() representation of a Square."""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)

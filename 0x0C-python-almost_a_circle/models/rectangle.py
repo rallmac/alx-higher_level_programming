@@ -1,106 +1,177 @@
-#!/usr/bin/python3
-
-from .base import Base
+#!/bin/usr/python3
+"""
+Rectangle module
+"""
+from models.base import Base
 
 
 class Rectangle(Base):
+    """
+    Rectangle class
+    """
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Initialize a new Rectangle.
+        """
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
-        self.set_width(width)
-        self.set_height(height)
-        self.set_x(x)
-        self.set_y(y)
 
-    def get_width(self):
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+
+    @property
+    def width(self):
+        """
+        width getter
+        """
         return self.__width
 
-    def set_width(self, width):
-        if isinstance(width, int) and width > 0:
-            self.__width = width
-        elif not isinstance(width, int):
+    @width.setter
+    def width(self, value):
+        """
+        Width setter
+        """
+        # added a check for when value is a bool, if the check is removed
+        # the unittest for it will fail
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("width must be an integer")
-        else:
+        if value <= 0:
             raise ValueError("width must be > 0")
+        self.__width = value
 
-    def get_height(self):
+    @property
+    def height(self):
+        """
+        height getter
+        """
         return self.__height
 
-    def set_height(self, height):
-        if isinstance(height, int) and height > 0:
-            self.__height = height
-        elif not isinstance(height, int):
+    @height.setter
+    def height(self, value):
+        """
+        height setter
+        """
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        else:
+        if value <= 0:
             raise ValueError("height must be > 0")
 
-    def get_x(self):
+        self.__height = value
+
+    @property
+    def x(self):
+        """
+        x getter
+        """
         return self.__x
 
-    def set_x(self, x):
-        if isinstance(x, int) and x >= 0:
-            self.__x = x
-        elif not isinstance(x, int):
+    @x.setter
+    def x(self, value):
+        """
+        x setter
+        """
+        # added a check for when value is a bool, if the check is removed
+        # the unittest for it will fail
+        if not isinstance(value, int) or isinstance(value, bool):
             raise TypeError("x must be an integer")
-        else:
+        if value < 0:
             raise ValueError("x must be >= 0")
+        self.__x = value
 
-    def get_y(self):
+    @property
+    def y(self):
+        """
+        y getter
+        """
         return self.__y
 
-    def set_y(self, y):
-        if isinstance(y, int) and y >= 0:
-            self.__y = y
-        elif not isinstance(y, int):
+    @y.setter
+    def y(self, value):
+        """
+        y setter
+        """
+        if not isinstance(value, int):
             raise TypeError("y must be an integer")
-        else:
+        if value < 0:
             raise ValueError("y must be >= 0")
+        self.__y = value
 
     def area(self):
-        return (self.__width * self.__height)
+        """
+        Returna area of the rectangle
+        """
+        area = self.width * self.height
+
+        return area
 
     def display(self):
-        for _ in range(self.__y):
+        """
+        Prints size of rectangle using #
+        """
+        for _ in range(self.y):
             print()
-        for _ in range(self.__height):
-            print(" " * self.__x + "#" * self.__width)
 
-    def to_dictionary(self):
-        return {
-            'id': self.id,
-            'width': self.__width,
-            'height': self.__height,
-            'x': self.__x,
-            'y': self.__y
-        }
-
-    def update(self, *args, **kwargs):
-        if args:
-            if len(args) >= 1:
-                self.id = args[0]
-            if len(args) >= 2:
-                self.set_width(args[1])
-            if len(args) >= 3:
-                self.set_height(args[2])
-            if len(args) >= 4:
-                self.set_x(args[3])
-            if len(args) >= 5:
-                self.set_y(args[4])
-        elif kwargs:
-            for key, value in kwargs.items():
-                if key == 'id':
-                    self.id = value
-                elif key == 'width':
-                    self.set_width(value)
-                elif key == 'height':
-                    self.set_height(value)
-                elif key == 'x':
-                    self.set_x(value)
-                elif key == 'y':
-                    self.set_y(value)
+        for _ in range(self.height):
+            print(" " * self.x + "#" * self.width)
 
     def __str__(self):
-        return(f'[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}')
+        """
+        Return the print() and str() representation of the Rectangle.
+        """
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x,
+                                                       self.y,
+                                                       self.width,
+                                                       self.height)
+
+    def update(self, *args, **kwargs):
+        """
+        Assign arguments to attributes based on their positions.
+        """
+        if args:
+            for count, arg in enumerate(args):
+                if count == 0:
+                    self.x = arg
+                elif count == 1:
+                    self.y = arg
+                elif count == 2:
+                    self.id = arg
+                elif count == 3:
+                    self.height = arg
+                elif count == 4:
+                    self.width = arg
+                else:
+                    break
+                
+        elif len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == "x":
+                    self.id = value
+                elif key == "y":
+                    self.y = value
+                elif key == "id":
+                    self.id = value
+                elif key == "height":
+                    self.height = value
+                elif key == "width":
+                    self.width = value
+                # removed the break statement, incase if the passed args are greater
+                # than 5, and one of the attributes is at the end
+
+    def to_dictionary(self):
+        """
+        Represents a dictionary representation of rectangle
+        """
+        rec_dict = {
+                "x": self.x,
+                "width": self.width,
+                "id": self.id,
+                "height": self.height,
+                "y": self.y
+        }
+
+        return rec_dict
+
+
+if __name__ == "__main__":
+    pass
