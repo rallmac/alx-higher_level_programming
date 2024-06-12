@@ -1,16 +1,19 @@
 #!/usr/bin/python3
 """
-Defines a base model class.
+This module Defines a base model class.
 """
 import json
 import csv
 import turtle
 
+
 class Base:
     """
-    Represents the base model
+    This class Represents the base model
     """
+
     __nb_objects = 0
+
     def __init__(self, id=None):
         if id is not None:
             self.id = id
@@ -18,10 +21,11 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
-
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returns the JSON string representation of list_dictionaries.
+        """
+        This function Returns the JSON string representation
+        of list_dictionaries.
         Args:
             list_dictionaries (list): A list of dictionaries.
         """
@@ -33,9 +37,11 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Writes the JSON string representation of list_objs to a file.
+        """ This function Writes the JSON string representation
+        of list_objs to a file.
         Args:
-            list_objs (list): List of instances who inherits of Base
+            list_objs (list): List of instances who inherits
+            the Base
         """
         file_name = "{}.json".format(cls.__name__)
 
@@ -50,7 +56,7 @@ class Base:
 
     def from_json_string(json_string):
         """
-
+        This function converts from json to string
         """
         if json_string is None or json_string == "[]":
             return []
@@ -58,7 +64,9 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance with all attributes already set.
+        """
+        This attribute Returns an instance with all
+        attributes already set.
         """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
@@ -72,7 +80,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         """
-
+        This attribute loads from a file "cls"
         """
         file_name = "{}.json".format(cls.__name__)
 
@@ -91,7 +99,8 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """
-        Write the CSV serialization of a list of objects to a file.
+        This attribute write the CSV serialization of a
+        list of objects to a file.
         """
         # corrected the name of the file extension from .json to .csv
         file_name = "{}.csv".format(cls.__name__)
@@ -112,11 +121,12 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """
-        Return a list of classes instantiated from a CSV file.
+        This attribute Return a list of classes instantiated
+        from a CSV file.
         """
         # corrected the name of the file extension from .json to .csv
         file_name = "{}.csv".format(cls.__name__)
-        
+
         try:
             with open(file_name, "r") as csvfile:
                 if cls.__name__ == "Rectangle":
@@ -149,8 +159,8 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
-        Opens a window and draws all the Rectangles,
-        and Squares using the turtle module.
+        This attribute Opens a window and draws all the
+        Rectangles, and Squares using the turtle module.
         """
         turt = turtle.Turtle()
 
@@ -180,7 +190,6 @@ class Base:
 
             turt.hideturtle()
 
-
         turt.color("#FFFF00")
 
         for sq in list_squares:
@@ -203,6 +212,7 @@ class Base:
             turt.hideturtle()
 
         turtle.exitonclick()
+
 
 if __name__ == "__main__":
 

@@ -8,6 +8,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
+
 class TestRectangle_area(unittest.TestCase):
     """Unittests for testing the area method of the Rectangle class."""
 
@@ -113,6 +114,7 @@ class TestRectangle_stdout(unittest.TestCase):
         r = Rectangle(5, 1, 2, 4, 7)
         with self.assertRaises(TypeError):
             r.display(1)
+
 
 if __name__ == "__main__":
     unittest.main()

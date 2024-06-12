@@ -8,8 +8,12 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
+
 class TestRectangle_to_dictionary(unittest.TestCase):
-    """Unittests for testing to_dictionary method of the Rectangle class."""
+    """
+    Unittests for testing to_dictionary method of the
+    Rectangle class
+    """
 
     def test_to_dictionary_output(self):
         r = Rectangle(10, 2, 1, 9, 5)
@@ -26,6 +30,7 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         r = Rectangle(10, 2, 4, 1, 2)
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
+
 
 if __name__ == "__main__":
     unittest.main()

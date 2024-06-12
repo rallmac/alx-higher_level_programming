@@ -7,7 +7,9 @@ from models.square import Square
 
 
 class TestSquare_update_args(unittest.TestCase):
-    """Unittests for testing update args method of the Square class."""
+    """
+    Unittests for testing update args method of the Square class
+    """
 
     def test_update_args_zero(self):
         s = Square(10, 10, 10, 10)
@@ -116,6 +118,7 @@ class TestSquare_update_args(unittest.TestCase):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             s.update(89, 1, "invalid", "invalid")
+
 
 if __name__ == "__main__":
     unittest.main()

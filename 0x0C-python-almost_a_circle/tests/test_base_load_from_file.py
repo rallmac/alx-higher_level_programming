@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-"""Defines unittests for base.py."""
+"""
+Defines unittests for base.py
+"""
 
 import os
 import unittest
@@ -8,8 +10,11 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase_load_from_file(unittest.TestCase):
-    """Unittests for testing load_from_file_method of Base class."""
+    """
+    Unittests for testing load_from_file_method of Base class
+    """
 
     @classmethod
     def tearDown(self):
@@ -72,6 +77,7 @@ class TestBase_load_from_file(unittest.TestCase):
     def test_load_from_file_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

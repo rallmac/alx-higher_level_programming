@@ -8,8 +8,11 @@ import unittest
 from models.base import Base
 from models.square import Square
 
+
 class TestSquare_update_kwargs(unittest.TestCase):
-    """Unittests for testing update kwargs method of Square class."""
+    """
+    Unittests for testing update kwargs method of Square class
+    """
 
     def test_update_kwargs_one(self):
         s = Square(10, 10, 10, 10)
@@ -108,6 +111,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
         s = Square(10, 10, 10, 10)
         s.update(size=5, id=89, a=1, b=54)
         self.assertEqual("[Square] (89) 10/10 - 5", str(s))
+
 
 if __name__ == "__main__":
     unittest.main()

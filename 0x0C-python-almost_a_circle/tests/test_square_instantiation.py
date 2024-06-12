@@ -408,5 +408,6 @@ class TestSquare_stdout(unittest.TestCase):
         with self.assertRaises(TypeError):
             s.display(1)
 
+
 if __name__ == "__main__":
     unittest.main()

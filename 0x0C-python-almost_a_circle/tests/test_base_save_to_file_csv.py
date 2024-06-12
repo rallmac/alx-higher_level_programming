@@ -8,8 +8,11 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase_save_to_file_csv(unittest.TestCase):
-    """Unittests for testing save_to_file_csv method of Base class."""
+    """
+    Unittests for testing save_to_file_csv method of Base class
+    """
 
     @classmethod
     def tearDown(self):
@@ -79,6 +82,7 @@ class TestBase_save_to_file_csv(unittest.TestCase):
     def test_save_to_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Square.save_to_file_csv([], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

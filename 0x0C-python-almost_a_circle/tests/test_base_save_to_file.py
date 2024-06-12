@@ -86,5 +86,6 @@ class TestBase_save_to_file(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square.save_to_file([], 1)
 
+
 if __name__ == "__main__":
     unittest.main()

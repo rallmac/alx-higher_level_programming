@@ -5,6 +5,7 @@ import unittest
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase_create(unittest.TestCase):
     """Unittests for testing create method of Base class."""
 

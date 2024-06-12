@@ -8,8 +8,11 @@ import unittest
 from models.base import Base
 from models.square import Square
 
+
 class TestSquare_to_dictionary(unittest.TestCase):
-    """Unittests for testing to_dictionary method of the Square class."""
+    """
+    Unittests for testing to_dictionary method of the Square class
+    """
 
     def test_to_dictionary_output(self):
         s = Square(10, 2, 1, 1)
@@ -26,6 +29,7 @@ class TestSquare_to_dictionary(unittest.TestCase):
         s = Square(10, 10, 10, 10)
         with self.assertRaises(TypeError):
             s.to_dictionary(1)
+
 
 if __name__ == "__main__":
     unittest.main()

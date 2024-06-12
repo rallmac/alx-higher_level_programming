@@ -8,6 +8,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+
 class TestBase_instantiation(unittest.TestCase):
     """Unittests for testing instantiation of the Base class."""
 
@@ -93,6 +94,7 @@ class TestBase_instantiation(unittest.TestCase):
     def test_two_args(self):
         with self.assertRaises(TypeError):
             Base(1, 2)
+
 
 if __name__ == "__main__":
     unittest.main()

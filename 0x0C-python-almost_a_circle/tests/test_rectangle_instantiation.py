@@ -8,8 +8,11 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
+
 class TestRectangle_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the Rectangle class."""
+    """
+    Unittests for testing instantiation of the Rectangle class
+    """
 
     def test_rectangle_is_base(self):
         self.assertIsInstance(Rectangle(10, 2), Base)
@@ -411,6 +414,7 @@ class TestRectangle_order_of_initialization(unittest.TestCase):
     def test_x_before_y(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(1, 2, "invalid x", "invalid y")
+
 
 if __name__ == "__main__":
     unittest.main()

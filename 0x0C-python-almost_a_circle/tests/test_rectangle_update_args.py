@@ -10,7 +10,10 @@ from models.rectangle import Rectangle
 
 
 class TestRectangle_update_args(unittest.TestCase):
-    """Unittests for testing update args method of the Rectangle class."""
+    """
+    Unittests for testing update args method of the
+    Rectangle class
+    """
 
     # Test args
     def test_update_args_zero(self):
@@ -145,6 +148,7 @@ class TestRectangle_update_args(unittest.TestCase):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             r.update(89, 1, 2, "invalid", "invalid")
+
 
 if __name__ == "__main__":
     unittest.main()
