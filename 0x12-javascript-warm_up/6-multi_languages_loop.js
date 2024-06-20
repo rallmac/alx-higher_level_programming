@@ -1,7 +1,10 @@
 #!/usr/bin/node
 
-for (let i = 0; i < 1; i++) {
-  console.log('C is fun');
-  console.log('Python is cool');
-  console.log('JavaScript is amazing');
+
+const array = ['C is fun', 'Python is cool', 'Javascript is amazing']
+let i = 0;
+
+while (i < array.length) {
+  console.log(array[i]);
+  i++;
 }
