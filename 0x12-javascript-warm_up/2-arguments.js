@@ -2,7 +2,7 @@
 
 if (process.argv.length > 2)
 {
-  console.log('Argument is found');
+  console.log('Argument found');
 }
 else
 {
