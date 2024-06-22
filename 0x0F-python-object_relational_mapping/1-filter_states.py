@@ -11,8 +11,6 @@ import MySQLdb
 def list_states_starting_with_n(mysql_username, mysql_password, database_name):
 
     db = MySQLdb.connect(
-
-
                 host="localhost",
                 port=3306,
                 user=mysql_username,
