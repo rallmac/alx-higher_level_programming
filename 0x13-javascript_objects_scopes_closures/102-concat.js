@@ -25,10 +25,7 @@ function concatFiles (file1Path, file2Path, destinationPath) {
       fs.writeFile(destinationPath, combinedData, 'utf8', (err) => {
         if (err) {
           console.error(`Error writing to file ${destinationPath}:`, err);
-          return;
         }
-
-        console.log(` `);
       });
     });
   });
