@@ -1,60 +1,38 @@
 #!/usr/bin/python3
 """
-This script takes in an argument and displays all values in the states table
-of the database hbtn_0e_0_usa where name matches the argument.
+Lists all states with a name starting with N (upper N) from the database
+hbtn_0e_0_usa sorted in ascending order by states.id
 """
-
-import sys
 import MySQLdb
+import sys
 
-def list_states_with_name(mysql_username, mysql_password, database_name, state_name):
-    """
-    Connect to the MySQL database and list all states with the specified name.
 
-    Args:
-        mysql_username (str): The MySQL username.
-        mysql_password (str): The MySQL password.
-        database_name (str): The name of the MySQL database.
-        state_name (str): The name of the state to search for.
+if __name__ == "__main__":
 
-    Returns:
-        None
-    """
-    # Connect to the MySQL database
-    db = MySQLdb.connect(
-                host="localhost",
-                port=3306,
-                user=mysql_username,
-                password=mysql_password,
-                db=database_name
-            )
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    cursor = db.cursor()
+    try:
+        conn = MySQLdb.connect(
+            host="localhost",
+            port=3306,
+            user=mysql_username,
+            passwd=mysql_password,
+            db=db_name,
+            charset="utf8"
+        )
+    except MySQLdb.Error as e:
+        print("Error connecting to database: {}".format(e))
+        sys.exit(1)
 
-    # Define the SQL query with user input
-    query = "SELECT id, name FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
-    cursor.execute(query)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' \
+                ORDER BY states.id ASC")
+    rows = cur.fetchall()
 
-    # Fetch all the rows
-    rows = cursor.fetchall()
-
-    # Print each row
     for row in rows:
         print(row)
 
-    # Close the cursor and connection
-    cursor.close()
-    db.close()
-
-if __name__ == "__main__":
-    """
-    Main function to get command line arguments and call the function to list states.
-    """
-    # Get the MySQL credentials and database name and state name from command line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
-    state_name = sys.argv[4]
-
-    # Call the function to list states with the specified name
-    list_states_with_name(mysql_username, mysql_password, database_name, state_name)
+    cur.close()
+    conn.close()
