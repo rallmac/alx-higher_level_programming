@@ -8,7 +8,19 @@ the argument.
 import sys
 import MySQLdb
 
-def list_states_with_name(mysql_username, mysql_password, database_name, state_name):
+
+def list_states_with_name(
+        mysql_username, mysql_password, database_name, state_name):
+    """
+    Connect to the MySQL database and list all states
+    with the specified name.
+
+    Args:
+        state_name (str): The name of the state to search for.
+
+    Returns:
+        None
+    """
     # Connect to the MySQL database
     db = MySQLdb.connect(
                 host="localhost",
@@ -21,7 +33,10 @@ def list_states_with_name(mysql_username, mysql_password, database_name, state_n
     cursor = db.cursor()
 
     # Define the SQL query with user input
-    query = "SELECT id, name FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name)
+    query = (
+            "SELECT id, name FROM states WHERE name = '{}' ORDER BY id ASC"
+            .format(state_name)
+            )
     cursor.execute(query)
 
     # Fetch all the rows
@@ -35,12 +50,19 @@ def list_states_with_name(mysql_username, mysql_password, database_name, state_n
     cursor.close()
     db.close()
 
+
 if __name__ == "__main__":
-    # Get the MySQL credentials and database name and state name from command line arguments
+    """
+    Main function to get command line arguments and call
+    the class method to list states.
+    """
+    # Get the MySQL credentials and database name and
+    # state name from command line arguments
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
     state_name = sys.argv[4]
 
     # Call the function to list states with the specified name
-    list_states_with_name(mysql_username, mysql_password, database_name, state_name)
+    list_states_with_name(
+            mysql_username, mysql_password, database_name, state_name)
