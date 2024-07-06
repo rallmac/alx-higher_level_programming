@@ -1,22 +1,40 @@
 #!/usr/bin/python3
 """
-Write a Python script that takes in a URL and an email,
-sends a POST request to the passed URL with the email as a
-parameter, and displays the body of the response (decoded in utf-8)
+Usage: python script.py <URL>
+This script fetches the X-Request-Id from the
+headers of a response from the given URL.
 """
 
 import urllib.request
-import urllib.parse
 import sys
 
+# Check if the script receives the URL as an argument
+if len(sys.argv) < 2:
+    print("Usage: python script.py <URL>")
+    sys.exit(1)
 
+# The URL is the first argument
 url = sys.argv[1]
-email = sys.argv[2]
 
-data = urllib.parse.urlencode({'email': email}).encode('utf-8')
+try:
+    # Use a with statement to send the request and handle the response
+    with urllib.request.urlopen(url) as response:
+        # Get the headers from the response
+        headers = response.getheaders()
 
-req = urllib.request.Request(url, data=data, method='POST')
+        # Find the value of the X-Request-Id header
+        x_request_id = dict(headers).get('X-Request-Id')
 
-with urllib.request.urlopen(req) as response:
-    response_body = response.read().decode('utf-8')
-    print(response_body)
+        # Print the value of the X-Request-Id header
+        if x_request_id:
+            print(f"X-Request-Id: {x_request_id}")
+        else:
+            print("X-Request-Id header not found in the response.")
+
+except urllib.error.URLError as e:
+    if hasattr(e, 'reason'):
+        print(f"Failed to reach the server. Reason: {e.reason}")
+    elif hasattr(e, 'code'):
+        print(f"Failed to fulfill the request. Error code: {e.code}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
