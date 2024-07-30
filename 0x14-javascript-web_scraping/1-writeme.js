@@ -12,6 +12,8 @@ if (!filePath || !stringToWrite) {
   process.exit(1);
 }
 
+const newLine = stringToWrite + '\n';
+
 // Write the string to the file in UTF-8 encoding
 fs.writeFile(filePath, stringToWrite, 'utf8', (err) => {
   if (err) {
