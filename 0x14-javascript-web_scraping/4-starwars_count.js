@@ -36,5 +36,5 @@ request(apiUrl, (error, response, body) => {
 
   // Print the number of movies
   console.log(wedgeMoviesCount);
-  console.log('');
+
 });
