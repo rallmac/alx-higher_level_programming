@@ -31,6 +31,6 @@ request(url, (error, response, body) => {
       console.error('Error writing to the file:', err);
       return;
     }
-    console.log('File written successfully');
+
   });
 });
