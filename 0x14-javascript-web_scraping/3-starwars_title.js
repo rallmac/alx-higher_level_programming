@@ -12,7 +12,7 @@ if (!movieId) {
 }
 
 // Define the URL with the given movie ID
-const url = `https://swapi-api.alx-tools.com/api/films/:id`;
+const url = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
 // Make the request to the Star Wars API
 request(url, (error, response, body) => {
